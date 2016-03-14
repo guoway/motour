@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>motour-core</artifactId>
+	<packaging>jar</packaging>
+	<name>motour-core</name>
+	<parent>
+		<groupId>club.motour</groupId>
+		<artifactId>motour-main</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.sylksoft.framework</groupId>
+			<artifactId>ss3a-kernel</artifactId>
+			<version>${ss3a-kernel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sylksoft.framework</groupId>
+			<artifactId>ss-support</artifactId>
+			<version>${ss-support.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate4</artifactId>
+			<version>${com.fasterxml.jackson.version}</version>
+		</dependency>		
+
+	</dependencies>
+
+	<build>
+		<finalName>motore-core</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.compiler.version}</source>
+					<target>${java.compiler.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-resources-properties</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<overwrite>true</overwrite>
+							<outputDirectory>${basedir}/src/main/resources/conf</outputDirectory>
+							<resources>
+								<!-- only copy deploy.properties -->
+								<resource>
+									<directory>${basedir}/src/main/${deploy.target}-resources</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>**/ap.properties</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

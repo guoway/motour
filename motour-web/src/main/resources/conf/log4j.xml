@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+       <param name="Encoding" value="UTF-8" />
+       <layout class="org.apache.log4j.PatternLayout">
+          <param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} %5p %t %C:%L - %m%n"/>
+       </layout>
+    </appender>
+
+ 
+    <!-- specify the logging level for loggers from other libraries -->
+    <logger name="com.opensymphony">
+    	<level value="INFO" />
+    </logger>
+  
+	<logger name="com.mchange">
+		<level value="ERROR"/>
+	</logger>
+  
+    <logger name="com.opensymphony.xwork2">
+       	<level value="OFF"/>
+    </logger>
+    <logger name="org.springframework">
+        <level value="INFO" />
+    </logger> 
+    <logger name="com.sylksoft.motour">
+        <level value="INFO"/>
+    </logger>
+    
+   <!-- for all other loggers log only debug and above log messages -->
+     <root>
+        <priority value="INFO"/> 
+        <appender-ref ref="STDOUT" /> 
+     </root> 
+    
+</log4j:configuration> 

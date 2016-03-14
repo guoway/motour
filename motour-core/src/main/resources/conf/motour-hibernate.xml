@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"	
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="ormDataSource" lazy-init="true" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass">
+			<value>${ap.db.driverClass}</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${ap.db.url}</value>
+		</property>
+		<property name="user">
+			<value>${ap.db.user}</value>
+		</property>
+		<property name="password">
+			<value>${ap.db.passwd}</value>
+		</property>
+		<property name="minPoolSize">
+			<value>5</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>200</value>
+		</property>
+ 		<property name="initialPoolSize">
+            <value>10</value>
+        </property>		
+        <property name="maxIdleTime">
+            <value>60</value>
+        </property>
+        <property name="acquireIncrement">
+            <value>5</value>
+        </property>  
+        <property name="maxStatements">
+            <value>0</value>
+        </property>                      
+	</bean>
+	
+	<bean id="listeners" class="net.ttddyy.dsproxy.listener.ChainListener">
+		<property name="listeners">
+			<list>
+				<bean class="net.ttddyy.dsproxy.listener.CommonsQueryLoggingListener">
+					<property name="logLevel" value="INFO" /> <!-- Default is DEBUG -->
+				</bean>
+				<bean class="net.ttddyy.dsproxy.listener.DataSourceQueryCountListener" />
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="dataSourceProxy" class="net.ttddyy.dsproxy.support.ProxyDataSource">
+		<property name="dataSource" ref="ormDataSource" />
+		<property name="listener" ref="listeners" />
+	</bean>	
+	
+	<bean id="ormSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceProxy"/>
+	    <property name="mappingLocations">
+			<list>
+        		<value>classpath:/hbm/*.xml</value>
+      		</list>      		
+    	</property>      
+    	<property name="packagesToScan">
+    		<list>
+    			<value>club.motour.model</value>
+    		</list>
+    	</property> 	     
+   		<property name="hibernateProperties">
+    		<props>
+    			<prop key="hibernate.dialect">
+    				${ap.hibernate.dialect}
+    			</prop>
+				<prop key="hibernate.show_sql">
+					false
+				</prop>	
+				<prop key="hibernate.format_sql">
+					false
+				</prop>
+				<prop key="hibernate.use_sql_comments">
+					false
+				</prop>
+            	<prop key="hibernate.hibernate.cache.use_query_cache">
+            		false
+            	</prop>		
+            	<prop key="hibernate.transaction.factory_class">
+            		org.hibernate.transaction.JDBCTransactionFactory
+            	</prop>      	
+            	<!-- 
+            		hibernate.temp.use_jdbc_metadata_defaults設定為false可避免Hibernate回報"Disabling contextual LOB creation as createClob() method threw error"的錯誤。
+            		該錯誤並不影響Hibernate作業，It's just annoyed。
+            	 -->				     
+				<prop key="hibernate.temp.use_jdbc_metadata_defaults">
+					false
+				</prop>              		
+    		</props>
+    	</property>		    	    			    	
+	</bean>
+		
+	<!-- Hibernate Template -->
+	<bean id="ormTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="ormSessionFactory"/>			
+	</bean>
+</beans>		 

@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>motour-admin</artifactId>
+	<packaging>war</packaging>
+	<name>motour-admin</name>
+	<parent>
+		<groupId>club.motour</groupId>
+		<artifactId>motour-main</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>	
+	
+	<dependencies>		
+		<dependency>
+			<groupId>com.sylksoft.framework</groupId>
+			<artifactId>ss3a-springmvc</artifactId>
+			<version>${ss3a-springmvc.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>club.motour</groupId>
+			<artifactId>motour-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jsp-api</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>ROOT</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.compiler.version}</source>
+					<target>${java.compiler.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-resources-properties</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<overwrite>true</overwrite>
+							<outputDirectory>${basedir}/src/main/resources/conf</outputDirectory>
+							<resources>
+								<!-- only copy deploy.properties -->
+								<resource>
+									<directory>${basedir}/src/main/${deploy.target}-resources</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>**/ap.properties</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>			
+		</plugins>
+	</build>
+</project>

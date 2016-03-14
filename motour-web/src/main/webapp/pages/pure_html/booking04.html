@@ -1,0 +1,288 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>MotourClub</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--menu-->
+<script src="js/scripts.js"></script>
+<link href="css/styles.css" rel="stylesheet">
+<!--//menu-->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!--news-->
+<link rel="stylesheet" href="css/owl.carousel.css" />
+        <script type="text/javascript" src="js/modernizr.js"></script>
+        <script type="text/javascript" src="js/smooth-scroll.js"></script>
+        <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
+        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+<!--//news-->
+<!--!登入跳窗-->
+<script src="js/jquery.modal.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/jquery.modal.css" type="text/css" media="screen" />
+<!--//登入跳窗-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Real Home Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- slide -->
+<script src="js/responsiveslides.min.js"></script>
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+</head>
+<body >
+<!--header-->
+	<div class="navigation">
+			<div class="container-fluid">
+				<nav class="pull">
+					<ul>
+						<li><a  href="myorder.html">客戶服務</a></li>
+						<li><a  href="booking-list.html">摩途客拉部</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+<div class="header">
+	<div class="container">
+		<!--logo-->
+			<div class="logo">
+				<a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
+			</div>
+		<!--//logo-->
+		<div class="top-nav">
+			<div class="nav-icon">
+				<div class="hero fa-2x nav_slide_button" id="hero">
+					<a href="#"><i class="fa fa-bars"></i> </a>
+				</div>
+			</div>
+			<!-- <ul class="right-icons">
+				<li><a href="">登入</a></li>
+				<li><a href="">註冊</a></li>
+			</ul> -->
+
+			<div class="language">
+				<select>
+					 <option selected="true">繁體中文</option>
+					 <option>简体中文</option>
+					 <option>English</option>
+				</select>
+			</div>
+			<div class="menu-left">
+				 <ul class="menu" style="width:115px">
+					<li class="item1"><a style="color:#000;" href="#"> 登入 / 註冊</a>
+						<ul class="cute">
+							<li class="subitem1"><a href="#ex2" rel="modal:open">會員登入</a></li>
+							<li class="subitem2"><a href="#ex3" rel="modal:open">特約商登入</a></li>
+							<li class="subitem2"><a href="#ex4" rel="modal:open">忘記密碼</a></li>
+							<li class="subitem2"><a href="#ex5" rel="modal:open">會員註冊</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+			<!--initiate accordion-->
+			<script type="text/javascript">
+				$(function() {
+				    var menu_ul = $('.menu > li > ul'),
+				        menu_a = $('.menu > li > a');
+				    menu_ul.hide();
+				    menu_a.click(function(e) {
+				        e.preventDefault();
+				        if (!$(this).hasClass('active')) {
+				            menu_a.removeClass('active');
+				            menu_ul.filter(':visible').slideUp('normal');
+				            $(this).addClass('active').next().stop(true, true).slideDown('normal');
+				        } else {
+				            $(this).removeClass('active');
+				            $(this).next().stop(true, true).slideUp('normal');
+				        }
+				    });
+
+				});
+			</script>
+			<form action="" class="login_form modal" id="ex2" style="display:none;">
+				<h3>會員登入</h3>
+				<p><label>會員帳號:</label><input type="text" /></p>
+				<p><label>密碼:</label><input type="password" /></p>
+				<p><input type="submit" value="登入" /></p>
+			</form>
+			<form action="" class="login_form modal" id="ex3" style="display:none;">
+				<h3>特約商登入</h3>
+				<p><label>會員帳號:</label><input type="text" /></p>
+				<p><label>密碼:</label><input type="password" /></p>
+				<p><input type="submit" value="登入" /></p>
+			</form>
+			<form action="" class="login_form modal" id="ex4" style="display:none;">
+				<h3>忘記密碼</h3>
+				<p><label>會員帳號:</label><input type="text" /></p>
+				<p><input type="submit" value="送出" /></p>
+			</form>
+			<form action="" class="login_form modal" id="ex5" style="display:none;">
+				<h3>會員註冊</h3>
+				<p><label>姓氏:</label><input type="text" /></p>
+				<p><label>名字:</label><input type="text" /></p>
+				<p><label>帳號:</label><input type="text" /></p>
+				<p><label>密碼:</label><input type="text" /></p>
+				<p><label>確認密碼:</label><input type="text" /></p>
+				<p><input type="submit" value="註冊" /></p>
+			</form>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<div class=" banner-buying">
+	<div class=" container">
+	<!---->
+	<div class="menu-right">
+		 <ul class="menu">
+			<li class="item1"><a href="#"> 摩途客拉部<i class="glyphicon glyphicon-menu-down"> </i> </a>
+				<ul class="cute">
+					<li class="subitem1"><a href="">踏上摩途</a></li>
+					<li class="subitem2"><a href="booking-list.html">摩圖據點</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="clearfix"> </div>
+		<!--initiate accordion-->
+
+	</div>
+</div>
+<!--//header-->
+
+<div class="booking-header">
+	<div class="container">
+		<div class="col-md-12">
+			<div class="booking-detail">
+				<p>感謝您租用MotourClub，您的訂單已經完成！</p>
+				<table>
+					<tr class="detail-thead">
+						<td colspan="2">訂單明細</td>
+					</tr>
+					<tr>
+						<td class="detail-title">訂單編號</td>
+						<td>5215156</td>
+					</tr>
+					<tr>
+						<td class="detail-title">據點</td>
+						<td>新大南科商務飯店</td>
+					</tr>
+					<tr>
+						<td class="detail-title">車型</td>
+						<td>Many110</td>
+					</tr>
+					<tr>
+						<td class="detail-title">數量</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td class="detail-title">租車日期</td>
+						<td>11/2/2015</td>
+					</tr>
+					<tr>
+						<td class="detail-title">還車日期</td>
+						<td>11/5/2015</td>
+					</tr>
+					<tr>
+						<td class="detail-title">金額</td>
+						<td>2000元</td>
+					</tr>
+					<tr>
+						<td class="detail-title">發票形式</td>
+						<td><span class="invoice">三聯</span>統一編號:<span>53049066</span></td>
+					</tr>
+					<tr>
+						<td class="detail-title">發票地址</td>
+						<td>100台北市中正區中山南路5號</td>
+					</tr>
+					<tr>
+						<td class="detail-title">收件人</td>
+						<td>OOO</td>
+					</tr>
+					<tr>
+						<td class="detail-contract" colspan="2">
+							<div class="detail-step">
+								<input type="submit" value="回到首頁" />
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--footer-->
+<div class="footer">
+	<div class="container">
+		<div class="footer-top-at">
+			<div class="col-md-12 amet-sed">
+				<h4>據點加盟</h4>
+				<hr>
+				<p>只要您認同我們的理念，對於電動機車租賃事業有興趣、有企圖、有信心，就歡迎您加入我們的行列成為特約商，不需要龐大的購車資金，也不需要具備租賃經驗，我們提供車輛、電池、維修保養、租賃管理系統、網路租賃平台通路等支援，當然、最重要的是我們的經驗傳承。我們有三種特約商形式可供選擇修保養，也不需要具備租賃經驗，我們提供經驗養成、營運系統、行銷支援、招牌、輔銷製作物，讓您以最低的資金成本敬能開啟電動機車租賃事業。</p>
+			</div>
+			<div class="col-md-12 amet-sed ">
+				<div class="col-md-4">
+					<h5>一、資深特約商：</h5>
+					<p>．長期向艾上綠能租用10輛以上，並成為艾上綠能之公開營運據點。<br>
+						．提供租車客戶取車/還車服務。<br>
+						．提供租車客戶電池交換及道路救援服務。<br>
+						．享有Motour Club網站之租賃訂單拆帳。</p>
+				</div>
+				<div class="col-md-4">
+					<h5>二、高級特約商：</h5>
+					<p> ．成為艾上綠能之公開取車/還車據點<br>
+						． 提供租車客戶取車/還車服務。<br>
+						．提供租車客戶電池交換及道路救援服務。<br>
+						．享有Motour Club網站之租賃訂單分潤。</p>
+				</div>
+				<div class="col-md-4">
+					<h5>三、輕鬆特約商：</h5>
+					<p>．享有Motour Club網站之優惠租賃價。</p>
+					<a class="joinus" href="#ex7" rel="modal:open">聯絡我們</a>
+					<a class="joinus" href="joinus.html">據點加盟</a>
+					<a href="#"><i class="fa fa-facebook-official social"></i></a>
+
+				</div>
+			</div>
+			<div class="col-md-12">
+				<p class="copyright">Copyright © 2015 MotourClub</p>
+			</div>
+		<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<form action="" class="login_form modal " id="ex7" style="display:none;">
+	<h3>聯絡我們</h3>
+	<p>感謝您提供的寶貴意見，我們將以最快的速度請專人與您聯絡，也歡迎您至摩途粉絲專頁留言與我們互動！<br><a href="">點我至粉絲頁連結</a></p>
+	<p><label>客服信箱:</label><input type="text" /></p>
+	<p><label>客服電話:</label><input type="password" /></p>
+	<p><label>訊息內容:</label><textarea name="Content"></textarea></p>
+	<p><input type="submit" value="送出" /></p>
+</form>
+<!--//footer-->
+</body>
+</html>

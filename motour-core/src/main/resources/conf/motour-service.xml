@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/tx
+    	http://www.springframework.org/schema/tx/spring-tx.xsd		
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd">	
+
+	<import resource="classpath:/conf/motour-dao.xml"/> 
+	<import resource="classpath:/conf/sylksoft-framework.xml"/>
+	<!-- Transaction -->
+	
+	<bean id="ormTxManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="ormSessionFactory"/>
+	</bean>	
+	
+	<tx:annotation-driven transaction-manager="ormTxManager"/>
+	
+	<tx:advice id="ormTxAdvice" transaction-manager="ormTxManager">
+		<tx:attributes>
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="query*" propagation="NOT_SUPPORTED" />
+			<tx:method name="get*" propagation="NOT_SUPPORTED" />
+			<tx:method name="*" propagation="SUPPORTS"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>		
+		<aop:pointcut id="ormServiceOperation" 
+			expression="execution(* com.sylksoft.ss3a.service.*Service.*(..))"/>
+		<aop:advisor advice-ref="ormTxAdvice" pointcut-ref="ormServiceOperation"/>
+	</aop:config>
+
+</beans>

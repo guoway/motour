@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task.xsd"
+	>	
+
+	<bean id="schedulerLoaderManager" class="com.sylksoft.ss3a.loader.PreloaderManager">
+		<property name="loaders">
+			<list>
+				<ref bean="messageLoader"/>
+				<ref bean="codeMetaLoader"/>
+				<ref bean="roleLoader"/>
+				<ref bean="functionLoader"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="loadOnceLoaderManager" class="com.sylksoft.ss3a.loader.PreloaderManager">
+		<property name="loaders">
+			<list>
+				<ref bean="zipCodeLoader"/>
+			</list>
+		</property>
+	</bean>
+	
+
+	<task:scheduler id="motourTaskScheduler" pool-size="10"/>
+	<task:scheduled-tasks scheduler="motourTaskScheduler">
+		<task:scheduled ref="schedulerLoaderManager" method="load" fixed-delay="600000" />
+		<task:scheduled ref="loadOnceLoaderManager" method="load" fixed-rate="#{ T(java.lang.Long).MAX_VALUE }"/>
+	</task:scheduled-tasks>
+</beans>

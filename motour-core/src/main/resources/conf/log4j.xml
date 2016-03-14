@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//LOG4J//DTD LOG4J//EN" "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} %5p %t %C:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="FILEOUT" class="org.apache.log4j.rolling.RollingFileAppender">
+		<param name="Encoding" value="UTF-8" />
+		<param name="file" value="${catalina.base}/logs/tc-adm.log" />
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="FileNamePattern" value="${catalina.base}/logs/tc-adm.%d{yyyy-MM-dd}.gz" />
+		</rollingPolicy>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} %5p %t %C:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- specify the logging level for loggers from other libraries -->
+
+	<logger name="com.mchange">
+		<level value="OFF" />
+	</logger>
+
+	<!-- for all other loggers log only debug and above log messages -->
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</log4j:configuration>
