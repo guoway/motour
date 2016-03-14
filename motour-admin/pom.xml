@@ -15,6 +15,12 @@
 			<groupId>com.sylksoft.framework</groupId>
 			<artifactId>ss3a-springmvc</artifactId>
 			<version>${ss3a-springmvc.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>javassist</artifactId>
+					<groupId>jboss</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<dependency>
