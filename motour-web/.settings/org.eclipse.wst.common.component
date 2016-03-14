@@ -4,22 +4,10 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="ss3a-springmvc-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ss3a-springmvc/ss3a-springmvc">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ss3a-kernel-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ss3a-kernel/ss3a-kernel">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="ss-kernel-3.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ss-kernel/ss-kernel">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ss-web-3.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ss-web/ss-web">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="motour-core-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/motour-core/motour-core">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ss-support-3.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ss-support/ss-support">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/motour-web/target/classes"/>
